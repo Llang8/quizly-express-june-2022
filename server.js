@@ -23,10 +23,6 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }))
 
-app.get('/', (req,res) => {
-    res.send('Hello world')
-})
-
 initializeRoutes(app)
 
 app.listen(process.env.PORT, (req, res) => {

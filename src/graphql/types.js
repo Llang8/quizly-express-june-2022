@@ -115,7 +115,7 @@ const SubmissionType = new GraphQLObjectType({
         id: { type: GraphQLID },
         userId: { type: GraphQLString },
         quizId: { type: GraphQLString },
-        score: { type: GraphQLInt },
+        score: { type: GraphQLFloat },
         user: {
             type: UserType,
             resolve(parent, args) {
