@@ -1,7 +1,7 @@
 const { GraphQLString, GraphQLList, GraphQLNonNull } = require('graphql')
 const { User, Quiz, Question, Submission } = require('../models')
 const { QuestionInputType, AnswerInputType } = require('./types')
-
+const { createJwt } = require('../util/auth')
 /* 
 * Registration mutation
 */
@@ -47,7 +47,8 @@ const login = {
         } else if (user.password !== args.password) {
             return 'Password does not match'
         } else {
-            return 'User logged in'
+            const token = createJwt(user)
+            return token
         }
     }
 } 

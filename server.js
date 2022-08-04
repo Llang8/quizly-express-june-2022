@@ -18,10 +18,24 @@ connectDB()
 app.set('view engine', 'ejs')
 app.set('views', './src/templates/views')
 
+/* Import and use cookies */
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
+/* Import and use authentication middleware */
+const { authenticate } = require('./src/middleware/auth')
+app.use(authenticate)
+
+/* Import and use userData middleware */
+const { userData } = require('./src/middleware/userData')
+app.use(userData)
+
 app.use('/graphql', graphqlHTTP({
     schema,
     graphiql: true
 }))
+
+app.use(express.urlencoded({ extended: true }))
 
 initializeRoutes(app)
 
