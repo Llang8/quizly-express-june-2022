@@ -8,6 +8,7 @@ AuthRouter.route("/login")
 
 AuthRouter.route("/register")
     .get(require('./register.view'))
+    .post(require('./register'))
 
 AuthRouter.route("/logout")
     .get(require('./logout'))

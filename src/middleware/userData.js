@@ -25,10 +25,11 @@ const userData = async (req, res, next) => {
             },
             submissions {
               userId,
-                score
+              score
             }
           },
           submissions {
+            id,
             quiz {
               title,
               description

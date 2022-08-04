@@ -5,7 +5,7 @@
     
     <div class="d-flex justify-content-between my-4">
         <h2>Your Submissions</h2>
-        <button class="btn btn-primary">Create Quiz +</button>
+        <a href="/quiz/create" class="btn btn-primary">Create Quiz +</a>
     </div>
 
     <table class="table table-bordered">
@@ -19,7 +19,7 @@
             <% for (const submission of user.submissions) { %>
                 <tr>
                     <td>
-                        <a href=""><strong><%= submission.quiz.title %></strong></a>
+                        <a href="/quiz/results/<%= submission.id %>"><strong><%= submission.quiz.title %></strong></a>
                         <br>
                         <small><%= submission.quiz.description %></small>
                     </td>

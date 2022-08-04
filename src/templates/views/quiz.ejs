@@ -9,7 +9,9 @@
                     <p class="mb-0"><%= quiz.description %></p>
                 </div>
             </div>
-            <form action="">
+            <form action="/quiz/<%= quiz.slug %>/submit" method="POST" enctype="application/x-www-form-urlencoded">
+                <!-- Pass quiz id to form submit route -->
+                <input type="hidden" name="quizId" value="<%= quiz.id %>">
                 <% for (const question of quiz.questions) { %>
                     <div class="card mt-4">
                         <div class="card-body">

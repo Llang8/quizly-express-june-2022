@@ -1,6 +1,6 @@
 const { GraphQLList, GraphQLID, GraphQLString } = require('graphql')
-const { UserType, QuizType } = require('./types')
-const { User, Quiz } = require('../models')
+const { UserType, QuizType, SubmissionType } = require('./types')
+const { User, Quiz, Submission } = require('../models')
 
 /* 
 * Query all users in the database
@@ -41,8 +41,22 @@ const quizBySlug = {
     }
 }
 
+/* 
+* Query submissions by their id
+*/
+const submissionById = {
+    type: SubmissionType,
+    args: {
+        id: { type: GraphQLString }
+    },
+    resolve(parent, args) {
+        return Submission.findById(args.id)
+    }
+}
+
 module.exports = {
     users,
     user,
-    quizBySlug
+    quizBySlug,
+    submissionById
 }
